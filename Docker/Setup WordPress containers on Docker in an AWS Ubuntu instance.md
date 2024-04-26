@@ -17,8 +17,8 @@ $ sudo apt-get install docker.io -y
 $ sudo docker run -d --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=pass@123 -e MYSQL_DATABASE=wordpressdb mysql:latest
 ```
 Explanation:
-"sudo docker run": This command starts a new Docker container.
 
+"sudo docker run": This command starts a new Docker container.
 "-d": Runs the container in detached mode (in the background).
 "--name mysqlcontainer": Specifies the name of the container as "mysqlcontainer".
 "-e MYSQL_ROOT_PASSWORD=Pass@123": Sets the root password for MySQL to "Pass@123".
