@@ -2,9 +2,8 @@
 
 2. Launch the terminal on the local machine & run SSH command to connect to the EC2 instance.
 
-ruby
-Copy code
 $ ssh -i "keypair.pem" ubuntu@instance_public_ip
+
 3. Install Docker:
 
 sql
