@@ -61,7 +61,8 @@ This is how we successfully installed docker MySql & Wordpress containers
 
 Now hit ec2 instance public ip in browser and you can see wordpress initial page.
 
-If you're seeing "Error establishing a database connection", instead of the WordPress initial screen, then both the MySQL and WordPress containers are on the same Docker network
+If you're seeing "Error establishing a database connection", instead of the WordPress initial screen, then both the MySQL and WordPress containers are on not the same Docker network
+
 ![error](https://github.com/stark303test/DevOps/blob/master/Docker/images/error.jpg)
 
 You can create a custom Docker network and attach both containers to it:
@@ -78,10 +79,13 @@ docker network connect custom-network wordpresscontainer
 ```
 
 9. Now hit ec2 instance public ip in browser and you can see wordpress initial page
+    
 ![initial](https://github.com/stark303test/DevOps/blob/master/Docker/images/initial.jpg)
 
-11. Setup username & password 
+11. Setup username & password
+    
 ![idpass](https://github.com/stark303test/DevOps/blob/master/Docker/images/id_pass_setup.jpg)
 
-12. This is how you can run WordPress containers on Docker in an AWS Ubuntu instance
+13. This is how you can run WordPress containers on Docker in an AWS Ubuntu instance
+    
 ![wordpress](https://github.com/stark303test/DevOps/blob/master/Docker/images/wordpress.jpg)
