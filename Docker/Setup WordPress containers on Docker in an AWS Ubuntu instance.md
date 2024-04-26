@@ -12,7 +12,7 @@
 $ sudo apt-get update
 $ sudo apt-get install docker.io -y
 ```
-2. Install & start MySql Container
+4. Install & start MySql Container
 ```bash
 $ sudo docker run -d --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=pass@123 -e MYSQL_DATABASE=wordpressdb mysql:latest
 ```
@@ -25,7 +25,7 @@ Explanation:
 "-e MYSQL_DATABASE=wordpressdb": Creates a new database named "wordpressdb".  
 "mysql:latest": Specifies the MySQL Docker image to use. Here, "latest" is the tag, which pulls the latest version of the MySQL image.
 
-3. Install & Start WordPress Container:
+5. Install & Start WordPress Container:
 ```bash
 $ sudo docker run -d -p 80:80 --name wordpresscontainer -e WORDPRESS_DB_HOST=mysqlcontainer -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=pass@123 -e WORDPRESS_DB_NAME=wordpressdb wordpress:latest
 ```
@@ -41,7 +41,7 @@ Explanation:
 "-e WORDPRESS_DB_NAME"=wordpressdb: Specifies the name of the MySQL database to use for WordPress as "wordpressdb".  
 "wordpress:latest": Specifies the WordPress Docker image to use. "latest" pulls the latest version of the WordPress image.
 
-3. Check for installed docker mysql & wordpress images
+6. Check for installed docker mysql & wordpress images
 ```bash
 ubuntu@ip-172-31-24-105:~$ sudo docker images
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
@@ -49,7 +49,7 @@ wordpress    latest    d653f5f8a602   2 weeks ago   685MB
 mysql        latest    6f343283ab56   4 weeks ago   632MB
 ```
 
-4. Check for running docker mysql & wordpress containers
+7. Check for running docker mysql & wordpress containers
 ```bash
 ubuntu@ip-172-31-24-105:~$ sudo docker ps
 CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                               NAMES
@@ -65,7 +65,7 @@ If you're seeing "Error establishing a database connection", instead of the Word
 
 You can create a custom Docker network and attach both containers to it:
 
-To create custom Docker network: 
+8. To create custom Docker network: 
 ```bash
 $ docker network create custom-network
 ```
@@ -76,7 +76,7 @@ $ docker network connect custom-network mysqlcontainer
 $ docker network connect custom-network wordpresscontainer
 ```
 
-Now hit ec2 instance public ip in browser and you can see wordpress.
+9. Now hit ec2 instance public ip in browser and you can see wordpress.
 
 This is how you can Setup WordPress containers on Docker in an AWS Ubuntu instance.
 
