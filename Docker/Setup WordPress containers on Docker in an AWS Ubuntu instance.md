@@ -14,7 +14,7 @@ $ sudo apt-get install docker.io -y
 ```
 4. Install & start MySql Container
 ```bash
-$ sudo docker run -d --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=pass@123 -e MYSQL_DATABASE=wordpressdb mysql:latest
+$ sudo docker run -d --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=Pass@123 -e MYSQL_DATABASE=wordpressdb mysql:latest
 ```
 Explanation:
 
@@ -27,7 +27,7 @@ Explanation:
 
 5. Install & Start WordPress Container:
 ```bash
-$ sudo docker run -d -p 80:80 --name wordpresscontainer -e WORDPRESS_DB_HOST=mysqlcontainer -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=pass@123 -e WORDPRESS_DB_NAME=wordpressdb wordpress:latest
+$ sudo docker run -d -p 80:80 --name wordpresscontainer -e WORDPRESS_DB_HOST=mysqlcontainer -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=Pass@123 -e WORDPRESS_DB_NAME=wordpressdb wordpress:latest
 ```
 Explanation:
 
