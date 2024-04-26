@@ -9,12 +9,12 @@
 
 3. Install docker: 
 ```bash
-$ sudo apt-get update
-$ sudo apt-get install docker.io -y
+sudo apt-get update
+sudo apt-get install docker.io -y
 ```
 4. Install & start MySql Container
 ```bash
-$ sudo docker run -d --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=Pass@123 -e MYSQL_DATABASE=wordpressdb mysql:latest
+sudo docker run -d --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=Pass@123 -e MYSQL_DATABASE=wordpressdb mysql:latest
 ```
 Explanation:
 
@@ -27,7 +27,7 @@ Explanation:
 
 5. Install & Start WordPress Container:
 ```bash
-$ sudo docker run -d -p 80:80 --name wordpresscontainer -e WORDPRESS_DB_HOST=mysqlcontainer -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=Pass@123 -e WORDPRESS_DB_NAME=wordpressdb wordpress:latest
+sudo docker run -d -p 80:80 --name wordpresscontainer -e WORDPRESS_DB_HOST=mysqlcontainer -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=Pass@123 -e WORDPRESS_DB_NAME=wordpressdb wordpress:latest
 ```
 Explanation:
 
@@ -43,7 +43,7 @@ Explanation:
 
 6. Check for installed docker mysql & wordpress images
 ```bash
-ubuntu@ip-172-31-24-105:~$ sudo docker images
+ubuntu@ip-172:~$ sudo docker images
 REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
 wordpress    latest    d653f5f8a602   2 weeks ago   685MB
 mysql        latest    6f343283ab56   4 weeks ago   632MB
@@ -51,7 +51,7 @@ mysql        latest    6f343283ab56   4 weeks ago   632MB
 
 7. Check for running docker mysql & wordpress containers
 ```bash
-ubuntu@ip-172-31-24-105:~$ sudo docker ps
+ubuntu@ip-172:~$ sudo docker ps
 CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                               NAMES
 1c958eb9292f   wordpress:latest   "docker-entrypoint.s…"   4 minutes ago    Up 4 minutes    0.0.0.0:80->80/tcp, :::80->80/tcp   wordpresscontainer
 9fbc4c210173   mysql:latest       "docker-entrypoint.s…"   23 minutes ago   Up 23 minutes   3306/tcp, 33060/tcp                 mysqlcontainer
@@ -67,13 +67,13 @@ You can create a custom Docker network and attach both containers to it:
 
 8. To create custom Docker network: 
 ```bash
-$ docker network create custom-network
+docker network create custom-network
 ```
 
 To attach both containers:
 ```bash
-$ docker network connect custom-network mysqlcontainer
-$ docker network connect custom-network wordpresscontainer
+docker network connect custom-network mysqlcontainer
+docker network connect custom-network wordpresscontainer
 ```
 
 9. Now hit ec2 instance public ip in browser and you can see wordpress.
