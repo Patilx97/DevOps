@@ -1,50 +1,71 @@
-1. Launch the AWS instance with an Ubuntu image and select HTTP port to be open & key pair.
+Setting up WordPress containers on Docker in an AWS Ubuntu instance.
 
-2. Launch the terminal on the local machine & run SSH command to connect to the EC2 instance.
+1. Launch the AWS instance with an Ubuntu image and select the HTTP port to be open, along with the key pair.
 
-$ ssh -i "keypair.pem" ubuntu@instance_public_ip
+2. Launch the terminal on your local machine and run the SSH command to connect to the EC2 instance:
 
-3. Install Docker:
+> ssh -i "keypair.pem" ubuntu@instance_public_ip
 
-sql
-Copy code
+3. Install docker: 
+
 $ sudo apt-get update
 $ sudo apt-get install docker.io -y
-4. Install & start MySQL Container
 
-css
-Copy code
+2. Install & start MySql Container
+
 $ sudo docker run -d --name mysqlcontainer -e MYSQL_ROOT_PASSWORD=pass@123 -e MYSQL_DATABASE=wordpressdb mysql:latest
+
 Explanation:
+"sudo docker run": This command starts a new Docker container.
+"-d": Runs the container in detached mode (in the background).
+"--name mysqlcontainer": Specifies the name of the container as "mysqlcontainer".
+"-e MYSQL_ROOT_PASSWORD=Pass@123": Sets the root password for MySQL to "Pass@123".
+"-e MYSQL_DATABASE=wordpressdb": Creates a new database named "wordpressdb".
+"mysql:latest": Specifies the MySQL Docker image to use. Here, "latest" is the tag, which pulls the latest version of the MySQL image.
 
-"-e MYSQL_ROOT_PASSWORD=Pass@123": Make sure the password complies with MySQL's password policy, which typically requires a mix of uppercase, lowercase, digits, and special characters.
-5. Install & Start WordPress Container:
+3. Install & Start WordPress Container:
 
-ruby
-Copy code
 $ sudo docker run -d -p 80:80 --name wordpresscontainer -e WORDPRESS_DB_HOST=mysqlcontainer -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=pass@123 -e WORDPRESS_DB_NAME=wordpressdb wordpress:latest
+
 Explanation:
 
-"-e WORDPRESS_DB_PASSWORD=Pass@123": Same as above, ensure compliance with MySQL's password policy.
-6. Check for installed Docker MySQL & WordPress images:
+sudo docker run: Initiates a new Docker container.
+-d: Runs the container in detached mode.
+-p 80:80: Maps port 80 of the host machine to port 80 of the container, allowing access to the WordPress site via port 80.
+--name wordpresscontainer: Names the container "wordpresscontainer".
+-e WORDPRESS_DB_HOST=mysqlcontainer: Specifies the hostname of the MySQL container as "mysqlcontainer".
+-e WORDPRESS_DB_USER=root: Sets the MySQL username for WordPress as "root".
+-e WORDPRESS_DB_PASSWORD=Pass@123: Sets the MySQL password for WordPress as "Pass@123".
+-e WORDPRESS_DB_NAME=wordpressdb: Specifies the name of the MySQL database to use for WordPress as "wordpressdb".
+wordpress:latest: Specifies the WordPress Docker image to use. "latest" pulls the latest version of the WordPress image.
 
-ruby
-Copy code
-$ sudo docker images
-7. Check for running Docker MySQL & WordPress containers:
+3. Check for installed docker mysql & wordpress images
 
-ruby
-Copy code
-$ sudo docker ps
-8. Additional Tip:
+ubuntu@ip-172-31-24-105:~$ sudo docker images
+REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+wordpress    latest    d653f5f8a602   2 weeks ago   685MB
+mysql        latest    6f343283ab56   4 weeks ago   632MB
 
-If you're seeing "", instead of the WordPress initial screen, it indicates that both the MySQL and WordPress containers are on the same Docker network. You can create a custom Docker network and attach both containers to it:
+4. Check for running docker mysql & wordpress containers
 
-ruby
-Copy code
+ubuntu@ip-172-31-24-105:~$ sudo docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                               NAMES
+1c958eb9292f   wordpress:latest   "docker-entrypoint.s…"   4 minutes ago    Up 4 minutes    0.0.0.0:80->80/tcp, :::80->80/tcp   wordpresscontainer
+9fbc4c210173   mysql:latest       "docker-entrypoint.s…"   23 minutes ago   Up 23 minutes   3306/tcp, 33060/tcp                 mysqlcontainer
+
+This is how we successfully installed docker MySql & Wordpress containers
+
+Now hit ec2 inatance public ip in browser and you can see wordpress.
+
+If you're seeing "Error establishing a database connection", instead of the WordPress initial screen, then both the MySQL and WordPress containers are on the same Docker network. 
+
+You can create a custom Docker network and attach both containers to it:
+
+To create custom Docker network: 
 $ docker network create custom-network
+
+To attach both containers:
 $ docker network connect custom-network mysqlcontainer
 $ docker network connect custom-network wordpresscontainer
-Conclusion:
 
-This setup guide provides a straightforward process for deploying WordPress containers on Docker in an AWS Ubuntu instance. Ensure passwords meet security standards and consider further optimizations such as Docker Compose for managing multi-container environments.
+This is how you can Setup WordPress containers on Docker in an AWS Ubuntu instance.
