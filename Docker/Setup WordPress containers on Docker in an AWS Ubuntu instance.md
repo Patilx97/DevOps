@@ -81,4 +81,4 @@ docker network connect custom-network wordpresscontainer
 
 10. ![Set username & password for wordpress](Image URL)
     
-![This is how you can Setup WordPress containers on Docker in an AWS Ubuntu instance](https://example.com/)
+![This is how you can Setup WordPress containers on Docker in an AWS Ubuntu instance](https://github.com/stark303test/DevOps/blob/master/Docker/images/Screenshot%202024-04-27%20034324.jpg)
