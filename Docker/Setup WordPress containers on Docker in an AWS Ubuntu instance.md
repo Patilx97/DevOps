@@ -79,3 +79,14 @@ $ docker network connect custom-network wordpresscontainer
 Now hit ec2 instance public ip in browser and you can see wordpress.
 
 This is how you can Setup WordPress containers on Docker in an AWS Ubuntu instance.
+
+
+sudo docker run: Initiates a new Docker container.  
+-d: Runs the container in detached mode.  
+-p 80:80: Maps port 80 of the host machine to port 80 of the container, allowing access to the WordPress site via port 80.  
+--name wordpresscontainer: Names the container "wordpresscontainer".  
+-e WORDPRESS_DB_HOST=mysqlcontainer: Specifies the hostname of the MySQL container as "mysqlcontainer".  
+-e WORDPRESS_DB_USER=root: Sets the MySQL username for WordPress as "root".  
+-e WORDPRESS_DB_PASSWORD=Pass@123: Sets the MySQL password for WordPress as "Pass@123".  
+-e WORDPRESS_DB_NAME=wordpressdb: Specifies the name of the MySQL database to use for WordPress as "wordpressdb".  
+wordpress:latest: Specifies the WordPress Docker image to use. "latest" pulls the latest version of the WordPress image.
