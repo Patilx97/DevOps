@@ -1,4 +1,4 @@
-# Setting up WordPress containers on Docker in an AWS Ubuntu instance.
+# Run WordPress & MySql Docker container in an AWS Ubuntu instance.
 
 1. Launch the AWS instance with an Ubuntu image and select the HTTP port to be open, along with the key pair.
 
