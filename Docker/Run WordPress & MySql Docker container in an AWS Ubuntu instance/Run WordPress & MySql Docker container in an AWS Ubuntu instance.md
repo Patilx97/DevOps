@@ -4,7 +4,7 @@
 
 2. Launch the terminal on your local machine and run the SSH command to connect to the EC2 instance:
 ```bash
-  ssh -i "keypair.pem" ubuntu@instance_public_ip
+ssh -i "keypair.pem" ubuntu@instance_public_ip
 ```
 
 3. Install docker: 
