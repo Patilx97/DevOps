@@ -61,7 +61,7 @@ This is how we successfully installed docker MySql & Wordpress containers
 
 Now hit ec2 instance public ip in browser and you can see wordpress initial page.
 
-If you're seeing "Error establishing a database connection", instead of the WordPress initial screen, then both the MySQL and WordPress containers are on not the same Docker network
+If you're seeing "Error establishing a database connection", instead of the WordPress initial screen, then both the MySQL and WordPress containers are not on the same Docker network
 
 ![error](https://github.com/stark303test/DevOps/blob/master/Docker/images/error.jpg)
 
