@@ -65,9 +65,9 @@ If you're seeing "Error establishing a database connection", instead of the Word
 
 ![error](https://github.com/stark303test/DevOps/blob/master/Docker/Run%20WordPress%20%26%20MySql%20Docker%20container%20in%20an%20AWS%20Ubuntu%20instance/images/error.jpg)
 
-You can create a custom Docker network and attach both containers to it:
+8.You can create a custom Docker network and attach both containers to it:
 
-8. To create custom Docker network: 
+To create custom Docker network: 
 ```bash
 docker network create custom-network
 ```
@@ -82,10 +82,10 @@ docker network connect custom-network wordpresscontainer
     
 ![initial](https://github.com/stark303test/DevOps/blob/master/Docker/Run%20WordPress%20%26%20MySql%20Docker%20container%20in%20an%20AWS%20Ubuntu%20instance/images/initial.jpg)
 
-11. Setup username & password
+10. Setup username & password
     
 ![idpass](https://github.com/stark303test/DevOps/blob/master/Docker/Run%20WordPress%20%26%20MySql%20Docker%20container%20in%20an%20AWS%20Ubuntu%20instance/images/idpass.jpg)
 
-13. This is how you can run WordPress containers on Docker in an AWS Ubuntu instance
+11. This is how you can run WordPress containers on Docker in an AWS Ubuntu instance
     
 ![wordpress](https://github.com/stark303test/DevOps/blob/master/Docker/Run%20WordPress%20%26%20MySql%20Docker%20container%20in%20an%20AWS%20Ubuntu%20instance/images/welcome%20wordpress.jpg)
