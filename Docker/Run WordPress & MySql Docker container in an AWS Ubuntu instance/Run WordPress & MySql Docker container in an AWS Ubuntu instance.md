@@ -65,7 +65,7 @@ If you're seeing "Error establishing a database connection", instead of the Word
 
 ![error](https://github.com/stark303test/DevOps/blob/master/Docker/Run%20WordPress%20%26%20MySql%20Docker%20container%20in%20an%20AWS%20Ubuntu%20instance/images/error.jpg)
 
-8.You can create a custom Docker network and attach both containers to it:
+8. You can create a custom Docker network and attach both containers to it:
 
 To create custom Docker network: 
 ```bash
